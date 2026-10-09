@@ -33,13 +33,13 @@ export default function HomeScreen({navigation}: Props) {
       <View style={styles.searchBox}>
         <Text style={styles.searchIcon}>⌕</Text>
         <TextInput style={styles.input} value={search} onChangeText={setSearch}
-          placeholder="Tìm sản phẩm (debounce)..." placeholderTextColor={COLORS.textLight}
+          placeholder="Tìm sản phẩm..." placeholderTextColor={COLORS.textLight}
           accessibilityLabel="Tìm sản phẩm" />
         {!!search && <Pressable onPress={() => setSearch('')}><Text style={styles.clear}>×</Text></Pressable>}
       </View>
       <View style={styles.filterLine}>
         <Text style={styles.filterText}>Gợi ý cho phòng {ROOM_LABEL}</Text>
-        <Text style={styles.filterText}>FlashList × 2</Text>
+        <Text style={styles.filterText}>{products.length} sản phẩm</Text>
       </View>
       {isPending ? <View style={styles.center}>
         <ActivityIndicator size="large" color={COLORS.primary} />

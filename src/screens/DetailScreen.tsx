@@ -40,7 +40,7 @@ export default function DetailScreen({navigation, route}: Props) {
           <Text style={styles.description}>{product.description}</Text>
           <Text style={styles.footNote}>ID: {route.params.id} · {STUDENT.mssv}</Text>
           <Pressable onPress={addToCart} style={styles.button} accessibilityRole="button">
-            <Text style={styles.buttonText}>+  Thêm vào giỏ · Haptic</Text>
+            <Text style={styles.buttonText}>+  Thêm vào giỏ</Text>
           </Pressable>
         </ScrollView>}
     </ExamScreen>

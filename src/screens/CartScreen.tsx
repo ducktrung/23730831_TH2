@@ -63,7 +63,7 @@ export default function CartScreen() {
         <View style={styles.row}><Text style={styles.totalTitle}>Tổng đơn</Text>
           <Text style={styles.total}>{money(subTotal + (shippingFee ?? 0))}</Text>
         </View>
-        <Text style={styles.noPay}>Không thanh toán online trong bài thi · phí chỉ tính khi có GPS</Text>
+        <Text style={styles.noPay}>Phí giao hàng được ước tính theo vị trí của bạn.</Text>
       </View>
     </ExamScreen>
   </SafeAreaView>;

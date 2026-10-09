@@ -30,7 +30,7 @@ export default function MeScreen() {
           </Text>
           {coords ? <>
             <Text style={styles.detail}>Vĩ độ: {coords.latitude.toFixed(6)}</Text>
-            <Text style={styles.detail}>Nguồn: {source === 'mock' ? 'Tọa độ mô phỏng (kiểm thử)' : 'Android Location'}</Text>
+            <Text style={styles.detail}>Nguồn: {source === 'mock' ? 'Vị trí mô phỏng' : 'Vị trí thiết bị'}</Text>
             <Text style={styles.detail}>Kinh độ: {coords.longitude.toFixed(6)}</Text>
             <Text style={styles.detail}>≈ {distanceKm?.toFixed(2)} km tới cổng KTX</Text>
             <Text style={styles.price}>{shippingFee !== null ? money(shippingFee) : 'Chưa có phí'}</Text>
@@ -44,15 +44,14 @@ export default function MeScreen() {
         </Pressable>
         {status === 'granted' && !coords && !loading && <Pressable
           accessibilityRole="button" style={styles.outline} onPress={useMockLocation}>
-          <Text style={styles.outlineText}>Dùng vị trí mô phỏng (Emulator)</Text>
+          <Text style={styles.outlineText}>Sử dụng vị trí mô phỏng</Text>
         </Pressable>}
         {status === 'blocked' && <Pressable style={styles.outline} onPress={() => {void openSettings();}}>
-          <Text style={styles.outlineText}>Mở Cài đặt (blocked)</Text>
+          <Text style={styles.outlineText}>Mở Cài đặt</Text>
         </Pressable>}
         <Pressable style={styles.logout} onPress={logout}>
           <Text style={styles.buttonText}>Đăng xuất</Text>
         </Pressable>
-        <Text style={styles.tip}>GPS máy ảo có thể đặt vị trí giả trong Extended Controls. Không dùng thanh toán online.</Text>
       </ScrollView>
     </ExamScreen>
   </SafeAreaView>;
@@ -86,5 +85,4 @@ const styles = StyleSheet.create({
   outlineText: {color: COLORS.primary, fontSize: 14, fontWeight: '800'},
   logout: {backgroundColor: COLORS.error, borderRadius: 11, paddingVertical: 14, marginTop: 16,
     alignItems: 'center'},
-  tip: {marginTop: 17, fontSize: 11, color: COLORS.textLight, textAlign: 'center', lineHeight: 17},
 });

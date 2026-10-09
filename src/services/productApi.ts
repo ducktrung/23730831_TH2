@@ -2,7 +2,6 @@ import {useQuery} from '@tanstack/react-query';
 import {STALE_TIME_MS, STUDENT} from '@constants/student';
 import {apiClient} from './apiClient';
 
-// Real product data from FakeStoreAPI; no substituted KTX sample products.
 export type Product = {
   id: number;
   title: string;
@@ -36,7 +35,6 @@ export function getProductById(products: Product[], id: string): Product | undef
   return products.find(product => String(product.id) === id);
 }
 
-/** Query tập trung: key riêng theo MSSV, staleTime lấy từ student.ts. */
 export function useProductsQuery() {
   return useQuery<Product[]>({
     queryKey: ['ktxgo-products', STUDENT.mssv],

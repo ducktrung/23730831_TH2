@@ -4,7 +4,7 @@ import Geolocation from '@react-native-community/geolocation';
 import {useLocationStore} from '@stores/locationStore';
 import {haversineKm, KTX_GATE, shipFee, type Coordinate} from '../utils/shipping';
 
-// Only for an explicitly selected emulator demonstration; never report this as real GPS.
+// Tọa độ mô phỏng được sử dụng khi người dùng chọn thủ công.
 const EMULATOR_DEMO_COORDS: Coordinate = {
   latitude: 10.8221589,
   longitude: 106.6868454,
@@ -12,7 +12,7 @@ const EMULATOR_DEMO_COORDS: Coordinate = {
 
 type Provider = 'playServices' | 'android';
 
-/** Native location callbacks may not return on some emulators. Enforce our own deadline. */
+// Giới hạn thời gian riêng nếu hệ thống không gọi callback vị trí.
 function readNativePosition(provider: Provider, timeoutMs: number): Promise<Coordinate> {
   return new Promise((resolve, reject) => {
     let finished = false;
@@ -135,7 +135,6 @@ export function useCampusLocation() {
       );
     } catch (unexpected) {
       if (version === requestVersion.current) {
-        // Do not label permission 'granted' if the permission check itself failed.
         setStatus(permissionGranted ? 'granted' : 'denied',
           `Lỗi khi lấy vị trí hoặc kiểm tra quyền: ${String(unexpected)}`);
       }
@@ -147,7 +146,6 @@ export function useCampusLocation() {
     }
   }, [setLocation, setStatus]);
 
-  // Explicit mock is acceptable for the emulator demonstration in the TH2 instructions.
   const useMockLocation = useCallback(() => {
     requestVersion.current += 1; // Ignore any late native callbacks from previous attempts.
     inFlight.current = false;

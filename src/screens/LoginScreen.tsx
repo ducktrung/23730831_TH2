@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Alert, KeyboardAvoidingView, Platform, Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {BANNER_IMAGE_ID, ROOM_LABEL, STUDENT, VARIANT} from '@constants/student';
+import {ROOM_LABEL, STUDENT, VARIANT} from '@constants/student';
 import {COLORS} from '@constants/theme';
 import {ExamScreen} from '@components/Watermark';
 import {useAuthStore} from '@stores/authStore';
@@ -40,9 +40,7 @@ export default function LoginScreen() {
           <Pressable onPress={submit} style={styles.button} accessibilityRole="button">
             <Text style={styles.buttonText}>Vào cửa hàng  →</Text>
           </Pressable>
-          <Text style={styles.note}>Auth Stack · chưa có token · Mã ảnh {BANNER_IMAGE_ID}</Text>
         </View>
-        <Text style={styles.student}>{STUDENT.mssv} · KTXGo TH2</Text>
       </KeyboardAvoidingView>
     </ExamScreen>
   </SafeAreaView>;
@@ -63,6 +61,4 @@ const styles = StyleSheet.create({
   button: {height: 52, backgroundColor: COLORS.primary, borderRadius: 12, marginTop: 14,
     justifyContent: 'center', alignItems: 'center', elevation: 2},
   buttonText: {color: COLORS.surface, fontSize: 15, fontWeight: '800'},
-  note: {textAlign: 'center', fontSize: 11, color: COLORS.textLight, marginTop: 15},
-  student: {color: COLORS.textLight, fontSize: 11, marginTop: 38},
 });
