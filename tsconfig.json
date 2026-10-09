@@ -1,0 +1,40 @@
+{
+  "extends": "@react-native/typescript-config",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@screens/*": [
+        "./src/screens/*"
+      ],
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@constants/*": [
+        "./src/constants/*"
+      ],
+      "@services/*": [
+        "./src/services/*"
+      ],
+      "@stores/*": [
+        "./src/stores/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@navigation/*": [
+        "./src/navigation/*"
+      ]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "**/node_modules",
+    "**/Pods"
+  ]
+}
